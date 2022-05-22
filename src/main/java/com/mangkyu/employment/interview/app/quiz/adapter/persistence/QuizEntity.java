@@ -17,7 +17,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor(force = true)
 @AllArgsConstructor
-class QuizEntity extends BaseEntity {
+public class QuizEntity extends BaseEntity {
 
     @Column(nullable = false)
     private String resourceId;

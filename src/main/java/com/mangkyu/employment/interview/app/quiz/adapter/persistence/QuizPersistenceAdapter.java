@@ -13,8 +13,9 @@ public class QuizPersistenceAdapter implements AddQuizPort {
 
     private final QuizPersistenceRepository quizPersistenceRepository;
 
-    @Override
+    @Transactional
     public void add(final QuizEntity quizEntity) {
         quizPersistenceRepository.save(quizEntity);
     }
+
 }

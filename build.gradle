@@ -26,9 +26,10 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
+	implementation 'org.mapstruct:mapstruct:1.4.2.Final'
 
-	implementation 'org.modelmapper:modelmapper:2.4.2'
+	annotationProcessor 'org.projectlombok:lombok'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	implementation 'com.h2database:h2'

@@ -1,7 +1,7 @@
 package com.mangkyu.employment.interview.app.quiz.testbase;
 
-import com.mangkyu.employment.interview.app.enums.QuizCategory;
-import com.mangkyu.employment.interview.app.enums.QuizLevel;
+import com.mangkyu.employment.interview.app.quiz.domain.QuizCategory;
+import com.mangkyu.employment.interview.app.quiz.domain.QuizLevel;
 import com.mangkyu.employment.interview.app.quiz.adapter.persistence.QuizEntity;
 import com.mangkyu.employment.interview.app.quiz.adapter.presentation.AddQuizRequest;
 import com.mangkyu.employment.interview.app.quiz.application.converter.QuizConverter;

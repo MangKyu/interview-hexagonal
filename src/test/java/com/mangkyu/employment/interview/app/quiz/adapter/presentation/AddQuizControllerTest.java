@@ -1,8 +1,8 @@
 package com.mangkyu.employment.interview.app.quiz.adapter.presentation;
 
 import com.google.gson.Gson;
-import com.mangkyu.employment.interview.app.enums.QuizCategory;
-import com.mangkyu.employment.interview.app.enums.QuizLevel;
+import com.mangkyu.employment.interview.app.quiz.domain.QuizCategory;
+import com.mangkyu.employment.interview.app.quiz.domain.QuizLevel;
 import com.mangkyu.employment.interview.app.quiz.testbase.QuizTestBase;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

@@ -1,4 +1,4 @@
-package com.mangkyu.employment.interview.app.enums;
+package com.mangkyu.employment.interview.app.quiz.domain;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

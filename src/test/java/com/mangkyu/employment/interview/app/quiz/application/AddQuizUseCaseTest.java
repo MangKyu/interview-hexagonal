@@ -1,7 +1,7 @@
 package com.mangkyu.employment.interview.app.quiz.application;
 
 import com.mangkyu.employment.interview.app.quiz.adapter.persistence.QuizEntity;
-import com.mangkyu.employment.interview.app.quiz.domain.port.out.AddQuizPort;
+import com.mangkyu.employment.interview.app.quiz.domain.port.out.SaveQuizPort;
 import com.mangkyu.employment.interview.app.quiz.testbase.QuizTestBase;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,13 +20,13 @@ class AddQuizUseCaseTest {
     private QuizService target;
 
     @Spy
-    private AddQuizPort addQuizPort;
+    private SaveQuizPort saveQuizPort;
 
     @Test
     void 퀴즈추가() {
         target.add(QuizTestBase.addQuizRequest());
 
-        verify(addQuizPort, times(1)).add(any(QuizEntity.class));
+        verify(saveQuizPort, times(1)).add(any(QuizEntity.class));
     }
 
 }

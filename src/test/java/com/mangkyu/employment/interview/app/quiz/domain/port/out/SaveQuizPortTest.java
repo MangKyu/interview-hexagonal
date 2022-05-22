@@ -11,9 +11,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-class AddQuizPortTest {
+class SaveQuizPortTest {
 
-    private AddQuizPort target;
+    private SaveQuizPort target;
 
     @Autowired
     private QuizPersistenceRepository quizPersistenceRepository;

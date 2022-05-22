@@ -1,6 +1,6 @@
 package com.mangkyu.employment.interview.app.quiz.adapter.persistence;
 
-import com.mangkyu.employment.interview.app.quiz.domain.port.out.AddQuizPort;
+import com.mangkyu.employment.interview.app.quiz.domain.port.out.SaveQuizPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class QuizPersistenceAdapter implements AddQuizPort {
+public class QuizPersistenceAdapter implements SaveQuizPort {
 
     private final QuizPersistenceRepository quizPersistenceRepository;
 

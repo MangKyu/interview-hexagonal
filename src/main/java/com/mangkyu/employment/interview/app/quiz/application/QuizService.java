@@ -4,7 +4,7 @@ import com.mangkyu.employment.interview.app.quiz.adapter.persistence.QuizEntity;
 import com.mangkyu.employment.interview.app.quiz.adapter.presentation.AddQuizRequest;
 import com.mangkyu.employment.interview.app.quiz.application.converter.QuizConverter;
 import com.mangkyu.employment.interview.app.quiz.domain.port.in.AddQuizUseCase;
-import com.mangkyu.employment.interview.app.quiz.domain.port.out.AddQuizPort;
+import com.mangkyu.employment.interview.app.quiz.domain.port.out.SaveQuizPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class QuizService implements AddQuizUseCase {
 
-    private final AddQuizPort addQuizPort;
+    private final SaveQuizPort addQuizPort;
     private final QuizConverter quizConverter;
 
     @Override

@@ -13,11 +13,10 @@ import org.springframework.stereotype.Service;
 public class QuizService implements AddQuizUseCase {
 
     private final SaveQuizPort addQuizPort;
-    private final QuizConverter quizConverter;
 
     @Override
     public void add(final AddQuizRequest addQuizRequest) {
-        final QuizEntity quizEntity = quizConverter.INSTANCE.toQuizEntity(addQuizRequest);
+        final QuizEntity quizEntity = QuizConverter.INSTANCE.toQuizEntity(addQuizRequest);
         addQuizPort.add(quizEntity);
     }
 

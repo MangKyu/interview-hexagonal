@@ -1,4 +1,4 @@
-package com.mangkyu.employment.interview.app.quiz.application.converter;
+package com.mangkyu.employment.interview.app.quiz.converter;
 
 import com.mangkyu.employment.interview.app.quiz.adapter.persistence.QuizEntity;
 import com.mangkyu.employment.interview.app.quiz.adapter.presentation.AddQuizRequest;

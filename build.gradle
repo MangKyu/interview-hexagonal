@@ -25,6 +25,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+
 	compileOnly 'org.projectlombok:lombok'
 	implementation 'org.mapstruct:mapstruct:1.4.2.Final'
 

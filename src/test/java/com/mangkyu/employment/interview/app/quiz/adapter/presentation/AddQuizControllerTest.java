@@ -1,6 +1,7 @@
 package com.mangkyu.employment.interview.app.quiz.adapter.presentation;
 
 import com.google.gson.Gson;
+import com.mangkyu.employment.interview.app.common.errors.CommonErrorCode;
 import com.mangkyu.employment.interview.app.quiz.domain.QuizCategory;
 import com.mangkyu.employment.interview.app.quiz.domain.QuizLevel;
 import com.mangkyu.employment.interview.app.quiz.testbase.QuizTestBase;
@@ -17,6 +18,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import java.util.Collections;
 import java.util.List;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest
@@ -45,8 +47,9 @@ class AddQuizControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(gson.toJson(addQuizRequest)));
 
-        result.andExpect(status().isBadRequest());
-
+        result.andExpect(status().isBadRequest())
+                .andExpect(jsonPath("code", CommonErrorCode.INVALID_PARAMETER).exists())
+                .andExpect(jsonPath("message", CommonErrorCode.INVALID_PARAMETER.getMessage()).exists());
     }
 
     @Test

@@ -4,7 +4,7 @@ import com.mangkyu.employment.interview.app.quiz.domain.QuizCategory;
 import com.mangkyu.employment.interview.app.quiz.domain.QuizLevel;
 import com.mangkyu.employment.interview.app.quiz.adapter.persistence.QuizEntity;
 import com.mangkyu.employment.interview.app.quiz.adapter.presentation.AddQuizRequest;
-import com.mangkyu.employment.interview.app.quiz.application.converter.QuizConverter;
+import com.mangkyu.employment.interview.app.quiz.converter.QuizConverter;
 
 import java.util.List;
 

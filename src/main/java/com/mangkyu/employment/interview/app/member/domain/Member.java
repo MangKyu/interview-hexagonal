@@ -15,6 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class Member {
 
+    private Long id;
     private String email;
     private QuizLevel quizLevel;
     private Integer quizSize;

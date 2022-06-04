@@ -1,11 +1,8 @@
-package com.mangkyu.employment.interview.app.solvedquiz.domain.port.out;
+package com.mangkyu.employment.interview.app.quiz.domain.port.out;
 
 import com.mangkyu.employment.interview.app.member.adapter.persistence.MemberEntity;
 import com.mangkyu.employment.interview.app.member.adapter.persistence.MemberPersistenceRepository;
-import com.mangkyu.employment.interview.app.quiz.adapter.persistence.QuizEntity;
-import com.mangkyu.employment.interview.app.quiz.adapter.persistence.QuizPersistenceRepository;
-import com.mangkyu.employment.interview.app.solvedquiz.adapter.persistence.SolvedQuizPersistenceAdapter;
-import com.mangkyu.employment.interview.app.solvedquiz.adapter.persistence.SolvedQuizPersistenceRepository;
+import com.mangkyu.employment.interview.app.quiz.adapter.persistence.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +10,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import static com.mangkyu.employment.interview.app.member.testbase.MemberTestBase.memberEntity;
 import static com.mangkyu.employment.interview.app.quiz.testbase.QuizTestBase.quizEntity;
-import static com.mangkyu.employment.interview.app.solvedquiz.testbase.SolvedQuizTestBase.solvedQuizEntity;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
@@ -43,7 +39,7 @@ class SaveSolvedQuizPortTest {
         quizPersistenceRepository.save(quizEntity);
 
 
-        target.save(solvedQuizEntity(memberEntity, quizEntity));
+        target.save(memberEntity, quizEntity);
 
         assertThat(solvedQuizPersistenceRepository.count()).isOne();
     }

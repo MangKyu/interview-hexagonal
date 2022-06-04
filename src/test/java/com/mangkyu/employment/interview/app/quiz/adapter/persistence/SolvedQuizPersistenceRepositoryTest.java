@@ -1,4 +1,4 @@
-package com.mangkyu.employment.interview.app.solvedquiz.adapter.persistence;
+package com.mangkyu.employment.interview.app.quiz.adapter.persistence;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

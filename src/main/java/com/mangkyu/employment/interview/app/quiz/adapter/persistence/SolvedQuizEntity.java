@@ -1,8 +1,7 @@
-package com.mangkyu.employment.interview.app.solvedquiz.adapter.persistence;
+package com.mangkyu.employment.interview.app.quiz.adapter.persistence;
 
 import com.mangkyu.employment.interview.app.common.adapter.persistence.BaseEntity;
 import com.mangkyu.employment.interview.app.member.adapter.persistence.MemberEntity;
-import com.mangkyu.employment.interview.app.quiz.adapter.persistence.QuizEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

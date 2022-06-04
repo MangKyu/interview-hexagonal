@@ -4,16 +4,13 @@ import com.mangkyu.employment.interview.app.member.adapter.persistence.MemberEnt
 import com.mangkyu.employment.interview.app.member.adapter.presentation.AddMemberRequest;
 import com.mangkyu.employment.interview.app.member.converter.MemberConverter;
 import com.mangkyu.employment.interview.app.member.domain.QuizDay;
-import com.mangkyu.employment.interview.app.quiz.adapter.persistence.QuizEntity;
-import com.mangkyu.employment.interview.app.quiz.converter.QuizConverter;
 import com.mangkyu.employment.interview.app.quiz.domain.QuizCategory;
 import com.mangkyu.employment.interview.app.quiz.domain.QuizLevel;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class MemberTestBase {
 
@@ -35,9 +32,28 @@ public class MemberTestBase {
             .build();
 
     public static MemberEntity memberEntity() {
+        return toMemberEntity(addMemberRequest);
+    }
+
+    private static MemberEntity toMemberEntity(final AddMemberRequest addMemberRequest) {
         final MemberEntity memberEntity = MemberConverter.INSTANCE.toMemberEntity(addMemberRequest);
         ReflectionTestUtils.setField(memberEntity, "createdAt", LocalDateTime.now());
         return memberEntity;
+    }
+
+    public static List<MemberEntity> allDaysMemberEntity() {
+        return Arrays.stream(QuizDay.values())
+                .map(v -> toMemberEntity(createAddMemberRequest(v)))
+                .collect(Collectors.toList());
+    }
+
+    private static AddMemberRequest createAddMemberRequest(final QuizDay v) {
+        return AddMemberRequest.builder()
+                .email(UUID.randomUUID() + "@gmail.com")
+                .quizLevel(QuizLevel.JUNIOR)
+                .quizDaySet(Collections.singleton(v))
+                .quizCategorySet(quizCategorySet)
+                .build();
     }
 
 }

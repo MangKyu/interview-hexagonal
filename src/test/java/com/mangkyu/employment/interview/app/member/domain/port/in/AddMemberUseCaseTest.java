@@ -11,18 +11,18 @@ import static org.mockito.Mockito.*;
 
 class AddMemberUseCaseTest {
 
-    private AddMemberUseCase addMemberUseCase;
+    private AddMemberUseCase target;
     private SaveMemberPort saveMemberPort;
 
     @BeforeEach
     void init() {
         saveMemberPort = mock(SaveMemberPort.class);
-        addMemberUseCase = new MemberService(saveMemberPort);
+        target = new MemberService(saveMemberPort);
     }
 
     @Test
     void 구성원추가() {
-        addMemberUseCase.add(addMemberRequest);
+        target.add(addMemberRequest);
 
         verify(saveMemberPort, times(1)).save(any(MemberEntity.class));
     }

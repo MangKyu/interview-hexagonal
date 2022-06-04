@@ -13,19 +13,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 class SaveMemberPortTest {
 
-    private SaveMemberPort saveMemberPort;
+    private SaveMemberPort target;
 
     @Autowired
     private MemberPersistenceRepository memberPersistenceRepository;
 
     @BeforeEach
     void init() {
-        saveMemberPort = new MemberPersistenceAdapter(memberPersistenceRepository);
+        target = new MemberPersistenceAdapter(memberPersistenceRepository);
     }
 
     @Test
     void 구성원추가() {
-        saveMemberPort.save(memberEntity());
+        target.save(memberEntity());
 
         assertThat(memberPersistenceRepository.count()).isOne();
     }

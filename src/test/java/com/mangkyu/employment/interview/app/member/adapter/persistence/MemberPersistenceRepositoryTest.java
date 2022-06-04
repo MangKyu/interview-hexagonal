@@ -7,6 +7,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 class MemberPersistenceRepositoryTest {
 
     @Autowired
-    private MemberPersistenceRepository memberPersistenceRepository;
+    private MemberPersistenceRepository target;
 
 }

@@ -13,6 +13,7 @@ public class MemberPersistenceAdapter implements SaveMemberPort {
     private final MemberPersistenceRepository memberPersistenceRepository;
 
     @Override
+    @Transactional
     public void save(final MemberEntity memberEntity) {
         memberPersistenceRepository.save(memberEntity);
     }

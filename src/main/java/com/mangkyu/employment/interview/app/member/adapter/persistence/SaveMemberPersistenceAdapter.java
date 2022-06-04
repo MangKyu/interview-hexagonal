@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class MemberPersistenceAdapter implements SaveMemberPort {
+public class SaveMemberPersistenceAdapter implements SaveMemberPort {
 
     private final MemberPersistenceRepository memberPersistenceRepository;
 

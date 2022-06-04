@@ -1,6 +1,6 @@
 package com.mangkyu.employment.interview.app.member.domain.port.out;
 
-import com.mangkyu.employment.interview.app.member.adapter.persistence.MemberPersistenceAdapter;
+import com.mangkyu.employment.interview.app.member.adapter.persistence.SaveMemberPersistenceAdapter;
 import com.mangkyu.employment.interview.app.member.adapter.persistence.MemberPersistenceRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,7 @@ class SaveMemberPortTest {
 
     @BeforeEach
     void init() {
-        target = new MemberPersistenceAdapter(memberPersistenceRepository);
+        target = new SaveMemberPersistenceAdapter(memberPersistenceRepository);
     }
 
     @Test

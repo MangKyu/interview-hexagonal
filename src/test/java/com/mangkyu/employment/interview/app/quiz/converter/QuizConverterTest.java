@@ -3,32 +3,42 @@ package com.mangkyu.employment.interview.app.quiz.converter;
 import com.mangkyu.employment.interview.app.quiz.adapter.persistence.QuizEntity;
 import com.mangkyu.employment.interview.app.quiz.adapter.presentation.AddQuizRequest;
 import com.mangkyu.employment.interview.app.quiz.adapter.presentation.GetQuizResponse;
-import com.mangkyu.employment.interview.app.quiz.converter.QuizConverter;
 import com.mangkyu.employment.interview.app.quiz.domain.Quiz;
 import com.mangkyu.employment.interview.app.quiz.testbase.QuizTestBase;
 import org.junit.jupiter.api.Test;
 
-import java.sql.Timestamp;
+import java.util.Collections;
+import java.util.List;
 
 import static com.mangkyu.employment.interview.app.quiz.testbase.QuizTestBase.quiz;
-import static com.mangkyu.employment.interview.app.quiz.testbase.QuizTestBase.quizEntity;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class QuizConverterTest {
 
     @Test
-    void 퀴즈로변환() {
-        final QuizEntity quizEntity = quizEntity();
-        final Quiz result = QuizConverter.INSTANCE.toQuiz(quizEntity);
+    void Quiz에서QuizEntity로변환() {
+        final Quiz quiz = quiz();
+        final QuizEntity result = QuizConverter.INSTANCE.toQuizEntity(quiz);
 
-        assertThat(result.getId()).isEqualTo(quizEntity.getId());
-        assertThat(result.getTitle()).isEqualTo(quizEntity.getTitle());
-        assertThat(result.getQuizCategory()).isEqualTo(quizEntity.getQuizCategory());
-        assertThat(result.getQuizLevel()).isEqualTo(quizEntity.getQuizLevel());
+        assertThat(result.getId()).isEqualTo(quiz.getId());
+        assertThat(result.getTitle()).isEqualTo(quiz.getTitle());
+        assertThat(result.getQuizCategory()).isEqualTo(quiz.getQuizCategory());
+        assertThat(result.getQuizLevel()).isEqualTo(quiz.getQuizLevel());
     }
 
     @Test
-    void 퀴즈엔티티로변환() {
+    void QuizList에서QuizEntityList로변환() {
+        final List<Quiz> quizList = Collections.singletonList(quiz());
+        final List<QuizEntity> result = QuizConverter.INSTANCE.toQuizEntities(quizList);
+
+        assertThat(result.get(0).getId()).isEqualTo(quizList.get(0).getId());
+        assertThat(result.get(0).getTitle()).isEqualTo(quizList.get(0).getTitle());
+        assertThat(result.get(0).getQuizCategory()).isEqualTo(quizList.get(0).getQuizCategory());
+        assertThat(result.get(0).getQuizLevel()).isEqualTo(quizList.get(0).getQuizLevel());
+    }
+
+    @Test
+    void AddQuizRequest에서QuizEntity로변환() {
         final AddQuizRequest addQuizRequest = QuizTestBase.addQuizRequest();
         final QuizEntity quizEntity = QuizConverter.INSTANCE.toQuizEntity(addQuizRequest);
 
@@ -38,7 +48,7 @@ class QuizConverterTest {
     }
 
     @Test
-    public void GetQuizResponse로변환() {
+    void Quiz에서GetQuizResponse로변환() {
         // given
         final Quiz quiz = quiz();
 

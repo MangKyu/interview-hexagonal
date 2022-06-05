@@ -34,4 +34,7 @@ public interface QuizConverter {
                 .collect(Collectors.toList());
     }
 
+    QuizEntity toQuizEntity(final Quiz quiz);
+
+    List<QuizEntity> toQuizEntities(List<Quiz> quizList);
 }

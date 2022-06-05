@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.sql.Timestamp;
 
+import static com.mangkyu.employment.interview.app.quiz.testbase.QuizTestBase.quiz;
 import static com.mangkyu.employment.interview.app.quiz.testbase.QuizTestBase.quizEntity;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -39,16 +40,14 @@ class QuizConverterTest {
     @Test
     public void GetQuizResponse로변환() {
         // given
-        final QuizEntity quiz = quizEntity();
+        final Quiz quiz = quiz();
 
         // when
         final GetQuizResponse result = QuizConverter.INSTANCE.toGetQuizResponse(quiz);
 
         // then
-        assertThat(result.getResourceId()).isEqualTo(quiz.getResourceId());
         assertThat(result.getTitle()).isEqualTo(quiz.getTitle());
         assertThat(result.getQuizLevelList().size()).isEqualTo(quiz.getQuizLevel().size());
-        assertThat(result.getCreatedAt()).isEqualTo(Timestamp.valueOf(quiz.getCreatedAt()).getTime());
         assertThat(result.getCategory()).isEqualTo(quiz.getQuizCategory().getTitle());
     }
 

@@ -12,14 +12,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GetQuizResponse {
 
-    private final String resourceId;
-
     private final String title;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private final String category;
 
     private final List<String> quizLevelList;
-    private final long createdAt;
 
 }

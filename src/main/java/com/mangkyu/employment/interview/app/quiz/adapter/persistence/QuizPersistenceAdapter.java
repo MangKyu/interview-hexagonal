@@ -1,5 +1,7 @@
 package com.mangkyu.employment.interview.app.quiz.adapter.persistence;
 
+import com.mangkyu.employment.interview.app.quiz.converter.QuizConverter;
+import com.mangkyu.employment.interview.app.quiz.domain.Quiz;
 import com.mangkyu.employment.interview.app.quiz.domain.port.out.LoadQuizPort;
 import com.mangkyu.employment.interview.app.quiz.domain.port.out.SaveQuizPort;
 import com.mangkyu.employment.interview.app.quiz.errors.QuizErrorCode;
@@ -22,9 +24,9 @@ public class QuizPersistenceAdapter implements SaveQuizPort, LoadQuizPort {
     }
 
     @Override
-    public QuizEntity findByResourceId(final String resourceId) {
-        return quizPersistenceRepository.findByResourceId(resourceId)
-                .orElseThrow(() -> new QuizException(QuizErrorCode.QUIZ_NOT_FOUND));
+    public Quiz findByResourceId(final String resourceId) {
+        return QuizConverter.INSTANCE.toQuiz(quizPersistenceRepository.findByResourceId(resourceId)
+                .orElseThrow(() -> new QuizException(QuizErrorCode.QUIZ_NOT_FOUND)));
     }
 
 }

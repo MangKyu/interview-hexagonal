@@ -1,6 +1,7 @@
 package com.mangkyu.employment.interview.app.quiz.testbase;
 
 import com.mangkyu.employment.interview.app.quiz.adapter.presentation.GetQuizResponse;
+import com.mangkyu.employment.interview.app.quiz.domain.Quiz;
 import com.mangkyu.employment.interview.app.quiz.domain.QuizCategory;
 import com.mangkyu.employment.interview.app.quiz.domain.QuizLevel;
 import com.mangkyu.employment.interview.app.quiz.adapter.persistence.QuizEntity;
@@ -32,9 +33,15 @@ public class QuizTestBase {
         return quizEntity;
     }
 
+    public static Quiz quiz() {
+        final QuizEntity quizEntity = QuizConverter.INSTANCE.toQuizEntity(addQuizRequest());
+        ReflectionTestUtils.setField(quizEntity, "createdAt", LocalDateTime.now());
+        return QuizConverter.INSTANCE.toQuiz(quizEntity);
+    }
+
     public static GetQuizResponse getQuizResponse() {
-        final QuizEntity quizEntity = quizEntity();
-        return QuizConverter.INSTANCE.toGetQuizResponse(quizEntity);
+        final Quiz quiz = quiz();
+        return QuizConverter.INSTANCE.toGetQuizResponse(quiz);
     }
 
 }

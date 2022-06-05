@@ -3,6 +3,7 @@ package com.mangkyu.employment.interview.app.quiz.domain.port.out;
 import com.mangkyu.employment.interview.app.quiz.adapter.persistence.QuizEntity;
 import com.mangkyu.employment.interview.app.quiz.adapter.persistence.QuizPersistenceAdapter;
 import com.mangkyu.employment.interview.app.quiz.adapter.persistence.QuizPersistenceRepository;
+import com.mangkyu.employment.interview.app.quiz.domain.Quiz;
 import com.mangkyu.employment.interview.app.quiz.errors.QuizErrorCode;
 import com.mangkyu.employment.interview.app.quiz.errors.QuizException;
 import com.mangkyu.employment.interview.app.quiz.testbase.QuizTestBase;
@@ -32,7 +33,7 @@ class LoadQuizPortTest {
         final QuizEntity quiz = QuizTestBase.quizEntity();
         repository.save(quiz);
 
-        final QuizEntity result = target.findByResourceId(quiz.getResourceId());
+        final Quiz result = target.findByResourceId(quiz.getResourceId());
 
         assertThat(result).isNotNull();
         assertThat(result.getTitle()).isEqualTo(quiz.getTitle());

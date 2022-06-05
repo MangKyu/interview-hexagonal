@@ -14,6 +14,7 @@ public class SendQuizHistoryHistoryPersistenceAdapter implements SaveSendQuizHis
     private final SendQuizHistoryPersistenceRepository repository;
 
     @Override
+    @Transactional
     public void save(final MemberEntity memberEntity, final QuizEntity quizEntity) {
         repository.save(new SendQuizHistoryEntity(memberEntity, quizEntity));
     }

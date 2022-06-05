@@ -15,11 +15,15 @@ import java.util.Set;
 @NoArgsConstructor
 public class Member {
 
-    private Long id;
+    private long id;
     private String email;
     private QuizLevel quizLevel;
-    private Integer quizSize;
+    private int quizSize;
     private Set<QuizDay> quizDaySet;
     private Set<QuizCategory> quizCategorySet;
+    private boolean isEnable;
 
+    public void disable() {
+        this.isEnable = false;
+    }
 }

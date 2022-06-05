@@ -36,6 +36,7 @@ class MemberConverterTest {
         assertThat(result.getQuizSize()).isEqualTo(memberEntity.getQuizSize());
         assertThat(result.getQuizDaySet()).isEqualTo(memberEntity.getQuizDaySet());
         assertThat(result.getQuizCategorySet()).isEqualTo(memberEntity.getQuizCategorySet());
+        assertThat(result.isEnable()).isTrue();
     }
 
 

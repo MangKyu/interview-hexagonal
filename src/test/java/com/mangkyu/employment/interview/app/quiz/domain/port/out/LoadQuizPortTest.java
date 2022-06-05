@@ -8,6 +8,7 @@ import com.mangkyu.employment.interview.app.quiz.adapter.persistence.QuizEntity;
 import com.mangkyu.employment.interview.app.quiz.adapter.persistence.QuizPersistenceAdapter;
 import com.mangkyu.employment.interview.app.quiz.adapter.persistence.QuizPersistenceRepository;
 import com.mangkyu.employment.interview.app.quiz.domain.Quiz;
+import com.mangkyu.employment.interview.app.quiz.domain.UnsentQuizzes;
 import com.mangkyu.employment.interview.app.quiz.errors.QuizErrorCode;
 import com.mangkyu.employment.interview.app.quiz.errors.QuizException;
 import com.mangkyu.employment.interview.app.quiz.testbase.QuizTestBase;
@@ -75,7 +76,7 @@ class LoadQuizPortTest {
                 .when(loadSendQuizHistoryPort)
                 .findSentQuizIdSet(savedMemberEntity.getId());
 
-        final List<Quiz> result = target.findUnsentQuizList(MemberConverter.INSTANCE.toMember(savedMemberEntity));
+        final UnsentQuizzes result = target.findUnsentQuizzes(MemberConverter.INSTANCE.toMember(savedMemberEntity));
 
         assertThat(result.size()).isNotZero();
     }
@@ -93,7 +94,7 @@ class LoadQuizPortTest {
                 .when(loadSendQuizHistoryPort)
                 .findSentQuizIdSet(savedMemberEntity.getId());
 
-        final List<Quiz> result = target.findUnsentQuizList(MemberConverter.INSTANCE.toMember(savedMemberEntity));
+        final UnsentQuizzes result = target.findUnsentQuizzes(MemberConverter.INSTANCE.toMember(savedMemberEntity));
 
         assertThat(result.size()).isZero();
     }

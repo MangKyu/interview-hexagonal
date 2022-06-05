@@ -1,9 +1,8 @@
 package com.mangkyu.employment.interview.app.quiz.adapter.persistence;
 
+import com.mangkyu.employment.interview.app.member.domain.Member;
 import com.mangkyu.employment.interview.app.quiz.converter.QuizConverter;
 import com.mangkyu.employment.interview.app.quiz.domain.Quiz;
-import com.mangkyu.employment.interview.app.quiz.domain.QuizCategory;
-import com.mangkyu.employment.interview.app.quiz.domain.QuizLevel;
 import com.mangkyu.employment.interview.app.quiz.domain.port.out.LoadQuizPort;
 import com.mangkyu.employment.interview.app.quiz.domain.port.out.LoadSendQuizHistoryPort;
 import com.mangkyu.employment.interview.app.quiz.domain.port.out.SaveQuizPort;
@@ -38,10 +37,10 @@ public class QuizPersistenceAdapter implements SaveQuizPort, LoadQuizPort {
     }
 
     @Override
-    public List<Quiz> findUnsentQuizList(final Long memberId, final QuizLevel quizLevel, final Set<QuizCategory> quizCategorySet) {
-        final Set<Long> sentQuizIdSet = loadSendQuizHistoryPort.findSentQuizIdSet(memberId);
+    public List<Quiz> findUnsentQuizList(final Member member) {
+        final Set<Long> sentQuizIdSet = loadSendQuizHistoryPort.findSentQuizIdSet(member.getId());
 
-        return quizPersistenceRepository.customFindByIdNotInAndQuizCategoryInAndQuizLevel(sentQuizIdSet, quizCategorySet, quizLevel)
+        return quizPersistenceRepository.customFindByIdNotInAndQuizCategoryInAndQuizLevel(sentQuizIdSet, member.getQuizCategorySet(), member.getQuizLevel())
                 .stream()
                 .map(QuizConverter.INSTANCE::toQuiz)
                 .collect(Collectors.toList());

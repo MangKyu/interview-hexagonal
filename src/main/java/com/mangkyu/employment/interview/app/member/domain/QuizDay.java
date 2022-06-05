@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.time.DayOfWeek;
+import java.time.LocalDateTime;
+import java.util.Arrays;
 
 @Getter
 @RequiredArgsConstructor
@@ -21,5 +23,11 @@ public enum QuizDay {
     private final String title;
     private final String desc;
     private final DayOfWeek dayOfWeek;
+
+    public static QuizDay findQuizDay(final LocalDateTime localDateTime) {
+        return Arrays.stream(QuizDay.values())
+                .filter(v -> v.dayOfWeek == localDateTime.getDayOfWeek())
+                .findAny().orElse(QuizDay.SUNDAY);
+    }
 
 }

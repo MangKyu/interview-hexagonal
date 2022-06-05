@@ -44,7 +44,7 @@ class LoadSendQuizHistoryPortTest {
 
         repository.save(new SendQuizHistoryEntity(memberEntity, quizEntity));
 
-        final Set<Long> sendQuizIdSet = target.findSendQuizIdSet(memberEntity.getId());
+        final Set<Long> sendQuizIdSet = target.findSentQuizIdSet(memberEntity.getId());
         assertThat(sendQuizIdSet.isEmpty()).isFalse();
     }
 

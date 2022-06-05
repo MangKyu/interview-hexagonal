@@ -4,5 +4,5 @@ import java.util.Set;
 
 public interface LoadSendQuizHistoryPort {
 
-    Set<Long> findSendQuizIdSet(Long memberId);
+    Set<Long> findSentQuizIdSet(Long memberId);
 }

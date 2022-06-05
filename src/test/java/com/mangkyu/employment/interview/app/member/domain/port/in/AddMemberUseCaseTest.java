@@ -1,7 +1,7 @@
 package com.mangkyu.employment.interview.app.member.domain.port.in;
 
-import com.mangkyu.employment.interview.app.member.adapter.persistence.MemberEntity;
 import com.mangkyu.employment.interview.app.member.application.MemberService;
+import com.mangkyu.employment.interview.app.member.domain.Member;
 import com.mangkyu.employment.interview.app.member.domain.port.out.SaveMemberPort;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,7 +24,7 @@ class AddMemberUseCaseTest {
     void 구성원추가() {
         target.add(addMemberRequest);
 
-        verify(saveMemberPort, times(1)).save(any(MemberEntity.class));
+        verify(saveMemberPort, times(1)).save(any(Member.class));
     }
 
 }

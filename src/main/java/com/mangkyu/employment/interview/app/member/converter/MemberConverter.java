@@ -13,6 +13,10 @@ public interface MemberConverter {
 
     MemberEntity toMemberEntity(final AddMemberRequest addMemberRequest);
 
+    MemberEntity toMemberEntity(final Member member);
+
+    Member toMember(final AddMemberRequest addMemberRequest);
+
     Member toMember(final MemberEntity memberEntity);
 
 }

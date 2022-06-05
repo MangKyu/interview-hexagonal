@@ -1,5 +1,7 @@
 package com.mangkyu.employment.interview.app.member.adapter.persistence;
 
+import com.mangkyu.employment.interview.app.member.converter.MemberConverter;
+import com.mangkyu.employment.interview.app.member.domain.Member;
 import com.mangkyu.employment.interview.app.member.domain.port.out.SaveMemberPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -14,8 +16,8 @@ public class SaveMemberPersistenceAdapter implements SaveMemberPort {
 
     @Override
     @Transactional
-    public void save(final MemberEntity memberEntity) {
-        memberPersistenceRepository.save(memberEntity);
+    public void save(final Member member) {
+        memberPersistenceRepository.save(MemberConverter.INSTANCE.toMemberEntity(member));
     }
 
 }

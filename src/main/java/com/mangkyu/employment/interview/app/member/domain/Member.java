@@ -16,6 +16,7 @@ import java.util.Set;
 public class Member {
 
     private long id;
+    private String resourceId;
     private String email;
     private QuizLevel quizLevel;
     private int quizSize;

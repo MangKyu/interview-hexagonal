@@ -1,13 +1,13 @@
 package com.mangkyu.employment.interview.app.member.domain.port.out;
 
-import com.mangkyu.employment.interview.app.member.adapter.persistence.SaveMemberPersistenceAdapter;
 import com.mangkyu.employment.interview.app.member.adapter.persistence.MemberPersistenceRepository;
+import com.mangkyu.employment.interview.app.member.adapter.persistence.SaveMemberPersistenceAdapter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import static com.mangkyu.employment.interview.app.member.testbase.MemberTestBase.memberEntity;
+import static com.mangkyu.employment.interview.app.member.testbase.MemberTestBase.member;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
@@ -25,7 +25,7 @@ class SaveMemberPortTest {
 
     @Test
     void 구성원추가() {
-        target.save(memberEntity());
+        target.save(member());
 
         assertThat(memberPersistenceRepository.count()).isOne();
     }

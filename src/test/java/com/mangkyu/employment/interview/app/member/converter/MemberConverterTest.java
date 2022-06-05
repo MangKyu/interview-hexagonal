@@ -12,8 +12,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 class MemberConverterTest {
 
     @Test
-    void 멤버엔티티로변환() {
-        final MemberEntity result = MemberConverter.INSTANCE.toMemberEntity(addMemberRequest);
+    void AddMemberRequest에서Member로변환() {
+        final Member result = MemberConverter.INSTANCE.toMember(addMemberRequest);
 
         assertThat(result.getResourceId()).isEqualTo(addMemberRequest.getResourceId());
         assertThat(result.getEmail()).isEqualTo(addMemberRequest.getEmail());
@@ -24,7 +24,7 @@ class MemberConverterTest {
     }
 
     @Test
-    void 멤버로변환() {
+    void MemberEntity에서Member로변환() {
         final MemberEntity memberEntity = memberEntity();
         ReflectionTestUtils.setField(memberEntity, "id", 1L);
 
@@ -38,6 +38,5 @@ class MemberConverterTest {
         assertThat(result.getQuizCategorySet()).isEqualTo(memberEntity.getQuizCategorySet());
         assertThat(result.isEnable()).isTrue();
     }
-
 
 }

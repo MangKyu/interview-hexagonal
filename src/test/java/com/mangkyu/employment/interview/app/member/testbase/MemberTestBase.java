@@ -3,6 +3,7 @@ package com.mangkyu.employment.interview.app.member.testbase;
 import com.mangkyu.employment.interview.app.member.adapter.persistence.MemberEntity;
 import com.mangkyu.employment.interview.app.member.adapter.presentation.AddMemberRequest;
 import com.mangkyu.employment.interview.app.member.converter.MemberConverter;
+import com.mangkyu.employment.interview.app.member.domain.Member;
 import com.mangkyu.employment.interview.app.member.domain.QuizDay;
 import com.mangkyu.employment.interview.app.quiz.domain.QuizCategory;
 import com.mangkyu.employment.interview.app.quiz.domain.QuizLevel;
@@ -34,6 +35,10 @@ public class MemberTestBase {
 
     public static MemberEntity memberEntity() {
         return toMemberEntity(addMemberRequest);
+    }
+
+    public static Member member() {
+        return MemberConverter.INSTANCE.toMember(toMemberEntity(addMemberRequest));
     }
 
     private static MemberEntity toMemberEntity(final AddMemberRequest addMemberRequest) {

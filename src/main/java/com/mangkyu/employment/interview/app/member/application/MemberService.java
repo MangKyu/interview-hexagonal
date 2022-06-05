@@ -15,6 +15,6 @@ public class MemberService implements AddMemberUseCase {
 
     @Override
     public void add(final AddMemberRequest addMemberRequest) {
-        saveMemberPort.save(MemberConverter.INSTANCE.toMemberEntity(addMemberRequest));
+        saveMemberPort.save(MemberConverter.INSTANCE.toMember(addMemberRequest));
     }
 }

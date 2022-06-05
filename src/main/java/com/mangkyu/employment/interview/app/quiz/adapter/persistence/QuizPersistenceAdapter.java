@@ -13,7 +13,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 
@@ -45,7 +46,10 @@ public class QuizPersistenceAdapter implements SaveQuizPort, LoadQuizPort {
                 .map(QuizConverter.INSTANCE::toQuiz)
                 .collect(Collectors.toList());
 
-        return new UnsentQuizzes(quizList, member.getQuizSize());
+        return UnsentQuizzes.builder()
+                .email(member.getEmail())
+                .quizList(quizList)
+                .sendSize(member.getQuizSize()).build();
     }
 
 }

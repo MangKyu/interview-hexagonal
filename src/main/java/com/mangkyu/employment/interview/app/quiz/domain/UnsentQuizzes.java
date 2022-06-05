@@ -13,6 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UnsentQuizzes {
 
+    private final String email;
     private final List<Quiz> quizList;
     private final int sendSize;
 

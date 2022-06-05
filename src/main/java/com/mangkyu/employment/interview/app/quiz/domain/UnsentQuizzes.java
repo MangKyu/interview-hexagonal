@@ -35,4 +35,8 @@ public class UnsentQuizzes {
         return copiedQuizList.subList(0, sendSize);
     }
 
+    public boolean isEmpty() {
+        return size() == 0;
+    }
+
 }

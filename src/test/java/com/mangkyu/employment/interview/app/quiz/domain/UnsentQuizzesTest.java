@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static com.mangkyu.employment.interview.app.member.testbase.MemberTestBase.member;
 import static com.mangkyu.employment.interview.app.quiz.testbase.QuizTestBase.quiz;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,7 +16,11 @@ class UnsentQuizzesTest {
 
     @BeforeEach
     void init() {
-        target = new UnsentQuizzes(List.of(quiz(), quiz(), quiz(), quiz()), sendSize);
+        target = UnsentQuizzes.builder()
+                .email(member().getEmail())
+                .quizList(List.of(quiz(), quiz(), quiz(), quiz()))
+                .sendSize(sendSize)
+                .build();
     }
 
     @Test
@@ -30,7 +35,11 @@ class UnsentQuizzesTest {
 
     @Test
     void 랜덤문제조회_마지막문제임() {
-        target = new UnsentQuizzes(List.of(quiz(), quiz(), quiz()), sendSize);
+        target = UnsentQuizzes.builder()
+                .email(member().getEmail())
+                .quizList(List.of(quiz(), quiz(), quiz()))
+                .sendSize(sendSize)
+                .build();
 
         final List<Quiz> result = target.getRandomQuizUnderSize();
 
@@ -41,6 +50,12 @@ class UnsentQuizzesTest {
     void 랜덤문제조회_마지막문제가아님() {
         final List<Quiz> result = target.getRandomQuizUnderSize();
         assertThat(result.size()).isEqualTo(sendSize);
+    }
+
+    @Test
+    void 문제가없음() {
+        final boolean result = target.isEmpty();
+        assertThat(result).isFalse();
     }
 
 }

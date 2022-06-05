@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Repository
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -17,6 +19,13 @@ public class SendQuizHistoryHistoryPersistenceAdapter implements SaveSendQuizHis
     @Transactional
     public void save(final MemberEntity memberEntity, final QuizEntity quizEntity) {
         repository.save(new SendQuizHistoryEntity(memberEntity, quizEntity));
+    }
+
+    @Override
+    public void saveAll(final MemberEntity memberEntity, final List<QuizEntity> quizEntityList) {
+        for (final QuizEntity quizEntity : quizEntityList) {
+            this.save(memberEntity, quizEntity);
+        }
     }
 
 }

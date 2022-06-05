@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import java.util.List;
+
 import static com.mangkyu.employment.interview.app.member.testbase.MemberTestBase.memberEntity;
 import static com.mangkyu.employment.interview.app.quiz.testbase.QuizTestBase.quizEntity;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -42,6 +44,19 @@ class SaveSendQuizHistoryPortTest {
         target.save(memberEntity, quizEntity);
 
         assertThat(solvedQuizPersistenceRepository.count()).isOne();
+    }
+
+    @Test
+    void 해결한문제들일괄추가() {
+        final MemberEntity memberEntity = memberEntity();
+        memberPersistenceRepository.save(memberEntity);
+
+        final List<QuizEntity> savedQuizEntityList = quizPersistenceRepository.saveAll(List.of(quizEntity(), quizEntity()));
+
+
+        target.saveAll(memberEntity, savedQuizEntityList);
+
+        assertThat(solvedQuizPersistenceRepository.count()).isEqualTo(2);
     }
 
 }

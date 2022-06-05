@@ -31,7 +31,7 @@ class LoadMemberPortTest {
     void 특정날짜에활성화된구성원찾기() {
         memberPersistenceRepository.saveAll(allDaysMemberEntity());
 
-        final List<Member> result = target.findEnabledUsers(QuizDay.FRIDAY);
+        final List<Member> result = target.findEnabledMembers(QuizDay.FRIDAY);
 
         assertThat(result.size()).isNotZero();
     }

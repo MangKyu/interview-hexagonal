@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface LoadMemberPort {
 
-    List<Member> findEnabledUsers(final QuizDay friday);
+    List<Member> findEnabledMembers(final QuizDay friday);
 
 }

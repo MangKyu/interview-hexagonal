@@ -19,7 +19,7 @@ public class LoadMemberPersistenceAdapter implements LoadMemberPort {
     private final MemberPersistenceRepository repository;
 
     @Override
-    public List<Member> findEnabledUsers(final QuizDay quizDay) {
+    public List<Member> findEnabledMembers(final QuizDay quizDay) {
         return repository.findAllByIsEnableTrueAndQuizDaySetIs(quizDay)
                 .stream()
                 .map(MemberConverter.INSTANCE::toMember)

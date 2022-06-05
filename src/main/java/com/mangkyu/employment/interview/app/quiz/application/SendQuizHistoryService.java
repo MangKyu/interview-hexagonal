@@ -15,7 +15,7 @@ public class SendQuizHistoryService implements LoadSendQuizHistoryPort {
     private final SendQuizHistoryPersistenceRepository repository;
 
     @Override
-    public Set<Long> findSendQuizIdSet(final Long memberId) {
+    public Set<Long> findSentQuizIdSet(final Long memberId) {
         return repository.findAllByMember_Id(memberId)
                 .stream()
                 .map(v -> v.getQuiz().getId())

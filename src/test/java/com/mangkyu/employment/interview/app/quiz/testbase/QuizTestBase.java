@@ -1,12 +1,12 @@
 package com.mangkyu.employment.interview.app.quiz.testbase;
 
+import com.mangkyu.employment.interview.app.quiz.adapter.persistence.QuizEntity;
+import com.mangkyu.employment.interview.app.quiz.adapter.presentation.AddQuizRequest;
 import com.mangkyu.employment.interview.app.quiz.adapter.presentation.GetQuizResponse;
+import com.mangkyu.employment.interview.app.quiz.converter.QuizConverter;
 import com.mangkyu.employment.interview.app.quiz.domain.Quiz;
 import com.mangkyu.employment.interview.app.quiz.domain.QuizCategory;
 import com.mangkyu.employment.interview.app.quiz.domain.QuizLevel;
-import com.mangkyu.employment.interview.app.quiz.adapter.persistence.QuizEntity;
-import com.mangkyu.employment.interview.app.quiz.adapter.presentation.AddQuizRequest;
-import com.mangkyu.employment.interview.app.quiz.converter.QuizConverter;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import java.time.LocalDateTime;
@@ -31,6 +31,10 @@ public class QuizTestBase {
         final QuizEntity quizEntity = QuizConverter.INSTANCE.toQuizEntity(addQuizRequest());
         ReflectionTestUtils.setField(quizEntity, "createdAt", LocalDateTime.now());
         return quizEntity;
+    }
+
+    public static List<QuizEntity> quizEntityList() {
+        return List.of(quizEntity(), quizEntity(), quizEntity(), quizEntity(), quizEntity());
     }
 
     public static Quiz quiz() {

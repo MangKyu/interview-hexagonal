@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
 
 @DataJpaTest
 class SaveQuizPortTest {
@@ -20,7 +21,7 @@ class SaveQuizPortTest {
 
     @BeforeEach
     void init() {
-        target = new QuizPersistenceAdapter(quizPersistenceRepository);
+        target = new QuizPersistenceAdapter(quizPersistenceRepository, mock(LoadSendQuizHistoryPort.class));
     }
 
     @Test

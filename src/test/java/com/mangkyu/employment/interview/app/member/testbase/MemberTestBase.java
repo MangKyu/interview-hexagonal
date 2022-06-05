@@ -20,6 +20,7 @@ public class MemberTestBase {
             QuizDay.FRIDAY));
 
     public static final Set<QuizCategory> quizCategorySet = new HashSet<>(List.of(
+            QuizCategory.JAVA,
             QuizCategory.CULTURE,
             QuizCategory.DATABASE,
             QuizCategory.EXPERIENCE));

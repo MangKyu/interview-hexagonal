@@ -13,12 +13,12 @@ import static com.mangkyu.employment.interview.app.quiz.testbase.QuizTestBase.qu
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-class SaveSolvedQuizPortTest {
+class SaveSendQuizHistoryPortTest {
 
-    private SaveSolvedQuizPort target;
+    private SaveSendQuizHistoryPort target;
 
     @Autowired
-    private SolvedQuizPersistenceRepository solvedQuizPersistenceRepository;
+    private SendQuizHistoryPersistenceRepository solvedQuizPersistenceRepository;
 
     @Autowired
     private MemberPersistenceRepository memberPersistenceRepository;
@@ -27,7 +27,7 @@ class SaveSolvedQuizPortTest {
 
     @BeforeEach
     void init() {
-        target = new SolvedQuizPersistenceAdapter(solvedQuizPersistenceRepository);
+        target = new SendQuizHistoryHistoryPersistenceAdapter(solvedQuizPersistenceRepository);
     }
 
     @Test

@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor(force = true)
 @AllArgsConstructor
-public class SolvedQuizEntity extends BaseEntity {
+public class SendQuizHistoryEntity extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")

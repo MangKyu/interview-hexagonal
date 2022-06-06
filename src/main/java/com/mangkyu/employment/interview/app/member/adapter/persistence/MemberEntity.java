@@ -8,18 +8,17 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "member")
 @Getter
-@Builder
 @NoArgsConstructor(force = true)
 @AllArgsConstructor
+@SuperBuilder
 public class MemberEntity extends BaseEntity {
 
     @Column(nullable = false)

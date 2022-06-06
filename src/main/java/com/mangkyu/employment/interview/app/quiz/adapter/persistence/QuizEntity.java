@@ -4,9 +4,9 @@ import com.mangkyu.employment.interview.app.common.adapter.persistence.BaseEntit
 import com.mangkyu.employment.interview.app.quiz.domain.QuizCategory;
 import com.mangkyu.employment.interview.app.quiz.domain.QuizLevel;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
 @Entity
 @Table(name = "quiz")
 @Getter
-@Builder
+@SuperBuilder
 @NoArgsConstructor(force = true)
 @AllArgsConstructor
 public class QuizEntity extends BaseEntity {

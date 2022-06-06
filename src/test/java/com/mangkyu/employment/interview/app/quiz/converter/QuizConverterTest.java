@@ -6,6 +6,7 @@ import com.mangkyu.employment.interview.app.quiz.adapter.presentation.GetQuizRes
 import com.mangkyu.employment.interview.app.quiz.domain.Quiz;
 import com.mangkyu.employment.interview.app.quiz.testbase.QuizTestBase;
 import org.junit.jupiter.api.Test;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import java.util.Collections;
 import java.util.List;
@@ -18,6 +19,8 @@ class QuizConverterTest {
     @Test
     void Quiz에서QuizEntity로변환() {
         final Quiz quiz = quiz();
+        ReflectionTestUtils.setField(quiz, "id", 1L);
+
         final QuizEntity result = QuizConverter.INSTANCE.toQuizEntity(quiz);
 
         assertThat(result.getId()).isEqualTo(quiz.getId());

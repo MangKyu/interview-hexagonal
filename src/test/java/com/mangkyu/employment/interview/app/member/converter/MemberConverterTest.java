@@ -5,8 +5,7 @@ import com.mangkyu.employment.interview.app.member.domain.Member;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.util.ReflectionTestUtils;
 
-import static com.mangkyu.employment.interview.app.member.testbase.MemberTestBase.addMemberRequest;
-import static com.mangkyu.employment.interview.app.member.testbase.MemberTestBase.memberEntity;
+import static com.mangkyu.employment.interview.app.member.testbase.MemberTestBase.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class MemberConverterTest {
@@ -36,7 +35,23 @@ class MemberConverterTest {
         assertThat(result.getQuizSize()).isEqualTo(memberEntity.getQuizSize());
         assertThat(result.getQuizDaySet()).isEqualTo(memberEntity.getQuizDaySet());
         assertThat(result.getQuizCategorySet()).isEqualTo(memberEntity.getQuizCategorySet());
-        assertThat(result.isEnable()).isTrue();
+        assertThat(result.getIsEnable()).isTrue();
+    }
+
+    @Test
+    void Member에서MemberEntity로변환() {
+        final Member member = member();
+        ReflectionTestUtils.setField(member, "id", 1L);
+
+        final MemberEntity result = MemberConverter.INSTANCE.toMemberEntity(member);
+
+        assertThat(result.getId()).isEqualTo(member.getId());
+        assertThat(result.getEmail()).isEqualTo(member.getEmail());
+        assertThat(result.getQuizLevel()).isEqualTo(member.getQuizLevel());
+        assertThat(result.getQuizSize()).isEqualTo(member.getQuizSize());
+        assertThat(result.getQuizDaySet()).isEqualTo(member.getQuizDaySet());
+        assertThat(result.getQuizCategorySet()).isEqualTo(member.getQuizCategorySet());
+        assertThat(result.getIsEnable()).isTrue();
     }
 
 }

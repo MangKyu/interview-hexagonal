@@ -49,7 +49,7 @@ public class SendQuizMailAdapter implements SendQuizPort {
             messageHelper.setTo(unsentQuizzes.getEmail());
             messageHelper.setSubject(createSubjectText(unsentQuizzes.isLast()));
 
-            final String mailText = createMailText(unsentQuizzes.getQuizList());
+            final String mailText = createMailText(unsentQuizzes.getRandomQuizUnderSize());
             messageHelper.setText(mailText, true);
             mailSender.send(message);
         } catch (final Exception e) {

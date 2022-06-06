@@ -8,14 +8,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-@Getter
 @Builder
 @RequiredArgsConstructor
 public class UnsentQuizzes {
 
+    @Getter
     private final String email;
-    private final List<Quiz> quizList;
+    @Getter
     private final int sendSize;
+
+    private final List<Quiz> quizList;
 
     public int size() {
         return quizList.size();

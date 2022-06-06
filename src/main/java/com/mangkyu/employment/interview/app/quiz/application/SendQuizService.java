@@ -42,7 +42,7 @@ public class SendQuizService implements SendQuizUseCase {
             sendQuizPort.send(unsentQuizzes);
             sendQuizHistoryPort.saveAll(
                     MemberConverter.INSTANCE.toMemberEntity(member),
-                    QuizConverter.INSTANCE.toQuizEntities(unsentQuizzes.getQuizList()));
+                    QuizConverter.INSTANCE.toQuizEntities(unsentQuizzes.getRandomQuizUnderSize()));
         }
 
         return memberList.size();

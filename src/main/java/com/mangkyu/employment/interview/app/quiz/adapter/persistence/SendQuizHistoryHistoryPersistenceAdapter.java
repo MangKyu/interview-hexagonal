@@ -22,6 +22,7 @@ public class SendQuizHistoryHistoryPersistenceAdapter implements SaveSendQuizHis
     }
 
     @Override
+    @Transactional
     public void saveAll(final MemberEntity memberEntity, final List<QuizEntity> quizEntityList) {
         for (final QuizEntity quizEntity : quizEntityList) {
             this.save(memberEntity, quizEntity);

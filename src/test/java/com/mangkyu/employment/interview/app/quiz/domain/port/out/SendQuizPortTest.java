@@ -1,6 +1,6 @@
 package com.mangkyu.employment.interview.app.quiz.domain.port.out;
 
-import com.mangkyu.employment.interview.app.quiz.adapter.mail.SendQuizMailAdapter;
+import com.mangkyu.employment.interview.app.quiz.adapter.mail.RealSendQuizMailAdapter;
 import com.mangkyu.employment.interview.app.quiz.domain.UnsentQuizzes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,7 +29,7 @@ class SendQuizPortTest {
     @BeforeEach
     void init() throws IOException {
         mailSender = mock(JavaMailSender.class);
-        target = new SendQuizMailAdapter(mailSender);
+        target = new RealSendQuizMailAdapter(mailSender);
 
         ReflectionTestUtils.setField(target, "START_MAIL_FORMAT", "{currentDate}");
         ReflectionTestUtils.setField(target, "BODY_MAIL_FORMAT", "{quiz.title}, {quiz.category}, {quiz.level}");

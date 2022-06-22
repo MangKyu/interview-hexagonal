@@ -93,7 +93,7 @@ public class SendQuizMailAdapter implements SendQuizPort {
     @NoArgsConstructor(access = AccessLevel.PRIVATE)
     static class FileUtils {
 
-        public static String readFileText(final String filePath) throws IOException {
+        static String readFileText(final String filePath) throws IOException {
             final File file = ResourceUtils.getFile(filePath);
             final InputStream inputStream = new FileInputStream(file);
             final byte[] byteData = FileCopyUtils.copyToByteArray(inputStream);
@@ -104,7 +104,7 @@ public class SendQuizMailAdapter implements SendQuizPort {
     @NoArgsConstructor(access = AccessLevel.PRIVATE)
     static class DateUtils {
 
-        public static String getCurrentDate(final LocalDateTime localDateTime) {
+        static String getCurrentDate(final LocalDateTime localDateTime) {
             final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
             return dateTimeFormatter.format(localDateTime);
         }

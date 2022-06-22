@@ -1,6 +1,5 @@
 package com.mangkyu.employment.interview.app.quiz.domain.port.in;
 
-import com.mangkyu.employment.interview.app.member.adapter.persistence.MemberEntity;
 import com.mangkyu.employment.interview.app.member.domain.Member;
 import com.mangkyu.employment.interview.app.member.domain.QuizDay;
 import com.mangkyu.employment.interview.app.member.domain.port.out.LoadMemberPort;
@@ -72,7 +71,7 @@ class SendQuizUseCaseTest {
         verify(loadQuizPort, times(0)).findUnsentQuizzes(member);
         verify(saveMemberPort, times(0)).save(member);
         verify(sendQuizPort, times(0)).send(any(UnsentQuizzes.class));
-        verify(sendQuizHistoryPort, times(0)).saveAll(any(MemberEntity.class), anyList());
+        verify(sendQuizHistoryPort, times(0)).saveAll(any(Member.class), anyList());
     }
 
     @Test
@@ -96,7 +95,7 @@ class SendQuizUseCaseTest {
         verify(loadQuizPort, times(1)).findUnsentQuizzes(member);
         verify(saveMemberPort, times(0)).save(member);
         verify(sendQuizPort, times(1)).send(unsentQuizzes);
-        verify(sendQuizHistoryPort, times(1)).saveAll(any(MemberEntity.class), anyList());
+        verify(sendQuizHistoryPort, times(1)).saveAll(any(Member.class), anyList());
     }
 
     @Test
@@ -120,7 +119,7 @@ class SendQuizUseCaseTest {
         verify(loadQuizPort, times(1)).findUnsentQuizzes(member);
         verify(saveMemberPort, times(1)).save(member);
         verify(sendQuizPort, times(1)).send(unsentQuizzes);
-        verify(sendQuizHistoryPort, times(1)).saveAll(any(MemberEntity.class), anyList());
+        verify(sendQuizHistoryPort, times(1)).saveAll(any(Member.class), anyList());
     }
 
 }

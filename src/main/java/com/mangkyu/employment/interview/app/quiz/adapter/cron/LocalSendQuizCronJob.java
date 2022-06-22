@@ -21,7 +21,7 @@ import java.util.*;
 @RequiredArgsConstructor
 @Profile("local")
 @Slf4j
-public class LocalSendQuizCronJob {
+public class LocalSendQuizCronJob implements SendQuizCronJob {
 
     private final SendQuizUseCase sendQuizUseCase;
     private final SaveQuizPort saveQuizPort;

@@ -1,8 +1,7 @@
 package com.mangkyu.employment.interview.app.quiz.domain.port.in;
 
 import com.mangkyu.employment.interview.app.quiz.adapter.persistence.QuizEntity;
-import com.mangkyu.employment.interview.app.quiz.application.QuizService;
-import com.mangkyu.employment.interview.app.quiz.domain.port.out.LoadQuizPort;
+import com.mangkyu.employment.interview.app.quiz.application.AddQuizService;
 import com.mangkyu.employment.interview.app.quiz.domain.port.out.SaveQuizPort;
 import com.mangkyu.employment.interview.app.quiz.testbase.QuizTestBase;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,8 +18,8 @@ class AddQuizUseCaseTest {
 
     @BeforeEach
     void init() {
-        this.saveQuizPort = spy(SaveQuizPort.class);
-        target = new QuizService(saveQuizPort, mock(LoadQuizPort.class));
+        this.saveQuizPort = mock(SaveQuizPort.class);
+        target = new AddQuizService(saveQuizPort);
     }
 
     @Test

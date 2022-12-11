@@ -1,9 +1,8 @@
 package com.mangkyu.employment.interview.app.quiz.domain.port.in;
 
 import com.mangkyu.employment.interview.app.quiz.adapter.presentation.GetQuizResponse;
-import com.mangkyu.employment.interview.app.quiz.application.QuizService;
+import com.mangkyu.employment.interview.app.quiz.application.GetQuizService;
 import com.mangkyu.employment.interview.app.quiz.domain.port.out.LoadQuizPort;
-import com.mangkyu.employment.interview.app.quiz.domain.port.out.SaveQuizPort;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +20,7 @@ class GetQuizUseCaseTest {
     @BeforeEach
     void init() {
         this.loadQuizPort = mock(LoadQuizPort.class);
-        target = new QuizService(mock(SaveQuizPort.class), loadQuizPort);
+        target = new GetQuizService(loadQuizPort);
     }
 
     @Test

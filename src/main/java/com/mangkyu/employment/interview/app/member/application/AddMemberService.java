@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class MemberService implements AddMemberUseCase {
+public class AddMemberService implements AddMemberUseCase {
 
     private final SaveMemberPort saveMemberPort;
 

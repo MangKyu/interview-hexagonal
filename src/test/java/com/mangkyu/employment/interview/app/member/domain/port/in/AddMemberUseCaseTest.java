@@ -1,6 +1,6 @@
 package com.mangkyu.employment.interview.app.member.domain.port.in;
 
-import com.mangkyu.employment.interview.app.member.application.MemberService;
+import com.mangkyu.employment.interview.app.member.application.AddMemberService;
 import com.mangkyu.employment.interview.app.member.domain.Member;
 import com.mangkyu.employment.interview.app.member.domain.port.out.SaveMemberPort;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,7 +17,7 @@ class AddMemberUseCaseTest {
     @BeforeEach
     void init() {
         saveMemberPort = mock(SaveMemberPort.class);
-        target = new MemberService(saveMemberPort);
+        target = new AddMemberService(saveMemberPort);
     }
 
     @Test

@@ -8,14 +8,13 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-@Transactional(readOnly = true)
+@Transactional
 @RequiredArgsConstructor
 public class SaveMemberPersistenceAdapter implements SaveMemberPort {
 
     private final MemberPersistenceRepository memberPersistenceRepository;
 
     @Override
-    @Transactional
     public void save(final Member member) {
         memberPersistenceRepository.save(MemberConverter.INSTANCE.toMemberEntity(member));
     }
